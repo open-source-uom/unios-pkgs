@@ -28,9 +28,11 @@ cd ../..
 
 echo ">>> 4. Pushing to GitHub..."
 eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/githubKey
+ssh-add /home/pkgbuilder/.ssh/githubKey
+
 git add .
 git commit -m "repo: update package database"
 git push origin main
 
 echo ">>> Database was updated!"
+
