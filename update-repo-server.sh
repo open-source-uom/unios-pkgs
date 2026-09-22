@@ -27,6 +27,8 @@ cp unios-repo.files.tar.gz.sig unios-repo.files.sig
 cd ../..
 
 echo ">>> 4. Pushing to GitHub..."
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/githubKey
 git add .
 git commit -m "repo: update package database"
 git push origin main
