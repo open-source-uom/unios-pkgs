@@ -7,10 +7,12 @@ TARGET_DIR="packages/x86_64"
 cd "$TARGET_DIR"
 
 echo ">>> Signing packages"
+rm -f *.pkg.tar.zst.sig
+
 for pkg in *.pkg.tar.zst; do
-    if [ -f "$pkg" ] && [ ! -f "$pkg.sig" ]; then
+    if [ -f "$pkg" ]; then
         echo "Signing $pkg..."
-        gpg --detach-sign --default-key "$KEY_ID" "$pkg"
+        gpg --detach-sign --batch --yes --default-key "$KEY_ID" "$pkg"
     fi
 done
 
